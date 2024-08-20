@@ -12,3 +12,12 @@ main{
 form{
     margin-top:25%;
 }
+
+form button{
+    width: 100%;
+}
+
+form div img{
+    width:  30px;
+    height: 30px;
+}

@@ -6,10 +6,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 
-    public boolean validateUser(String username,String password){
+
+    public String validaLogin(String username,String password) {
+                                
+        /*
+            Isolar a validação em uma Service(validação) que usa uma classe model(consulta) que conecta no banco para
+            setar os valores ou pegar os valores do objeto repository (campos do usuario)                        
+        */ 
         
-        //Criar uma validação para os dados de login e senha aqui
-        return "usuario".equals(username) && "password".equals(password);
+        if("diego".equals(username)&&"123456".equals(password)){
+            return "home";
+        }else{
+            return "login";
+        }
+        
     }
-    
 }

@@ -8,18 +8,27 @@
 </head>
 <body class="d-flex text-center align-items-center py-4 bg-body-tertiary">
 
-  <main class="d-flex w-40 m-auto">
+  <main class="d-flex m-auto">
 
-      <form class="form-signin" action="/Validalogin" method="post">
-        <img src="../static/img/icon-teste.png" alt="Imagem" class="mb-4">
-        <h1 class="h3 mb-3 fw-normal">Preencha os campos para logar!</h1>
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" name="formId1" id="formId1" placeholder=""/>
-          <label for="formId1">Name</label>
 
+      <form class="form-signin" action="/sendDataLogin" method="post">
+
+        <div class="bg-secondary.bg-gradient text-light fs-3 border" th:if="${errorMessage}">
+          <p th:text="${errorMessage}"></p>
         </div>
+
+        <div class="d-flex flex-column bd-highlight mb-1">
+          <img th:src="@{/img/teste.png}" alt="Imagem" class="p-0 bd-highlight mb-1">
+          <h1 class="p-0 bd-highlight mb-1">Preencha os campos para logar!</h1>
+        </div>
+
         <div class="form-floating mb-3">
-          <input type="password" class="form-control" name="password" id="password">
+          <input type="text" class="form-control" name="username" id="usernameId" placeholder=""/>
+          <label for="formId1">Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" name="password" id="passwordId">
           <label for="password">Password</label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
