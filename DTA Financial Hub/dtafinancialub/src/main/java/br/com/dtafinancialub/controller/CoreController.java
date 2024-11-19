@@ -1,18 +1,21 @@
 package br.com.dtafinancialub.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.com.dtafinancialub.model.UserModel;
 import br.com.dtafinancialub.services.LoginService;
-
-
 
 @Controller
 public class CoreController {
 
+
+    @Autowired
+    private LoginService loginService;
 
     @GetMapping("/")   
     public String login(Model model){
@@ -25,20 +28,15 @@ public class CoreController {
                                 , @RequestParam("password") String password
                                 , Model model
                               ) {
-        String urlDest = "login";                     
-        /*
-            Isolar a validação em uma Service(validação) que usa uma classe model(consulta) que conecta no banco para
-            setar os valores ou pegar os valores do objeto repository (campos do usuario)                        
-        */ 
+        String urlDest = loginService.validaLogin(username, password);
         
-        LoginService LoginService = new LoginService();
-        
-        urlDest = LoginService.validaLogin(username, password);
-        
+        UserModel UserTeste = new UserModel();
+
+
         if(urlDest.equals("home")){
             return "redirect:/home";
         }else{
-            model.addAttribute("errorMessage","Dados de login inválidos!");
+            model.addAttribute("errorMessage","Dados de login inválidos!"+UserTeste.getPassword());
             return "login";
         }
         
@@ -49,5 +47,11 @@ public class CoreController {
 
         return "home";
     }
+
+    @GetMapping("/index")
+    public String index(Model model) {
+        return "index";
+    }
+    
     
 }
