@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #feffff;
+}
+header{
+    width: auto;
+    height: 18%;
+}
+main{
+    margin-top: 2%;
+    width: auto;
+    height: 40%;
+    margin-bottom: 2%;
+}
+header{
+    width: auto;
+    height: 18%;
+}
